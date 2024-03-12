@@ -15,7 +15,7 @@ $(CLIENT): $(CLIENT).c
 	$(CC) $(CFLAGS) -o $(CLIENT) $(CLIENT).c
 
 
-udp: $(UDPSERVER) $(UDPCLIENT)
+udp: $(UDPSERVER).a $(UDPCLIENT).a
 
 $(UDPSERVER): $(UDPSERVER).c
 	$(CC) $(CFLAGS) -o $(UDPSERVER) $(UDPSERVER).c
@@ -23,6 +23,7 @@ $(UDPSERVER): $(UDPSERVER).c
 $(UDPCLIENT): $(UDPCLIENT).c
 	$(CC) $(CFLAGS) -o $(UDPCLIENT) $(UDPCLIENT).c
 
+all: tcp udp
 
 clean:
-	rm -f $(SERVER) $(CLIENT)
+	rm -f $(SERVER) $(CLIENT) $(UDPSERVER) $(UDPCLIENT)
